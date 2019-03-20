@@ -28,20 +28,20 @@ namespace B3d.Engine.Adaptors
    {
       [Header("AdaptorBtcDotInfo Config")]
       // BLOCKCHAIN.info
-      [Tooltip("API key for blockchain.info")]
+      [Tooltip("API key for explorer.x42.tech")]
       public string ApiKey = "enter API key here";
       [Tooltip("Root URI for address data")]
-      public string ApiUriRootForAddr = "https://blockchain.info/rawaddr/";
+      public string ApiUriRootForAddr = "https://explorer.x42.tech/address/";
       [Tooltip("Root URI for transaction data")]
-      public string ApiUriRootForTx = "https://blockchain.info/rawtx/";
+      public string ApiUriRootForTx = "https://explorer.x42.tech/tx/";
 
       [Header("Record Results of API calls")]
       [Tooltip("Set true to record raw results of API calls to file")]
       public bool RecordToFileOn = false;
       [Tooltip("Files are stored in this folder for Addresses (use trailing /)")]
-      public string RecordToFileFolderAddr = @"Assets/B3d/Engine/Adaptors/Resources/BtcAddress/";
+      public string RecordToFileFolderAddr = @"Assets/B3d/Engine/Adaptors/Resources/x42Address/";
       [Tooltip("Files are stored in this folder for Tx (use trailing /)")]
-      public string RecordToFileFolderTx = @"Assets/B3d/Engine/Adaptors/Resources/BtcTx/";
+      public string RecordToFileFolderTx = @"Assets/B3d/Engine/Adaptors/Resources/x42Tx/";
 
       Family IAdaptor.GetFamily()
       {
@@ -120,7 +120,7 @@ namespace B3d.Engine.Adaptors
          string u = null;
          if (nodeType == NodeType.Addr)
          {
-            // https://blockchain.info/rawaddr/3CD1QW6fjgTwKq3Pj97nty28WZAVkziNom?cors=true&limit=20&offset=0&api_code=
+            // https://explorer.x42.tech/address/XSTpk7CEbqepjGREaz7azPvPyNS5TnXhdA?cors=true&limit=20&offset=0&api_code=
             u = ApiUriRootForAddr;
             u = u + nodeId + "?cors=true";
             //u = u + "&limit=1" + "&offset=0";
@@ -128,7 +128,7 @@ namespace B3d.Engine.Adaptors
          }
          else if (nodeType == NodeType.Tx)
          {
-            // https://blockchain.info/rawtx/6aae5a6707326ed618a1932d27c38b36e83ee820683743a8649c19c56a170e83?cors=true&api_code=
+            // https://explorer.x42.tech/tx/ca177f64a33d9aca2bcd80fbf32ecfe6e8646c2b51fd75f21cf9537c3d31ab77?cors=true&api_code=
             u = ApiUriRootForTx;
             u = u + nodeId + "?cors=true";
             // u = u + "&limit=1" + "&offset=0"; // For blockchain.info the limit and offset is not supported anyway for tx
